@@ -1,0 +1,28 @@
+.rpl-bg {
+    background-color: #7952b3;
+}
+
+.rpl-header-logo {
+    width: 50px;
+}
+
+.rpl-section-header {
+    text-align: center;
+}
+
+.rpl-section-icon {
+    width: 150px;
+    background-color: antiquewhite;
+    border-radius: 100%;
+}
+
+section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#services {
+    background-image: url("../img/bg-1.png");
+    background-size: cover;
+    color: rgb(173, 237, 247);
+}
