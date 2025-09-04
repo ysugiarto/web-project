@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Javascript</title>
+
+        <script>
+            function myJsFunction(){
+                var a;
+                a = 100;
+                console.log("Nilai 1: "+a);
+                window.alert("Nilai 1: "+a);
+
+                a = "hello";
+                console.log("Nilai 2: "+a);
+                window.alert("Nilai 2: "+a);
+                document.getElementById("output").innerHTML = "Nilai 2: " + a;
+            }  
+        </script>
+    </head>
+
+    <body>
+        <h1>Penggunaan Javascript</h1>
+        <p>
+            Halaman ini digunakan untuk menguji script sederhana.
+        </p>
+
+        <button type="button" onclick="myJsFunction()">Click Me!</button>
+        <h2 id="output">Output</h2>
+    </body>
+</html>
