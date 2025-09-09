@@ -18,6 +18,7 @@
 
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/chart.js"></script>
 </head>
 
 <body>
@@ -84,37 +85,59 @@
 
     <section id="service">
         <div class="container">
-            <div>
+            <div class="section-header">
+                <img class="section-img" src="assets/img/services2.png">
                 <h2>Our Services</h2>
             </div>
 
+            
             <div class="row">
+                <?php
+                    include("koneksi.php");
+                    $sql = "SELECT judul, keterangan, gambar FROM services;";
+                    $hasil = $conn->query($sql);
+
+                    if ($hasil->num_rows >0){
+                        while ($service = $hasil->fetch_assoc() ) {
+                            echo '<div class="col-md-4">';
+                            echo '<h4>' . $service["judul"]. '</h4>';
+                            echo '<p>' . $service["keterangan"]. '</p>';
+                            echo '<img class="service-img" src="assets/img/'. $service["gambar"] .'">';
+                            echo '</div>';
+                        }
+                    }
+
+                    $conn->close();
+                ?>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <img class="section-img" src="assets/img/about2.png">
+                <h2>About Us</h2>
+            </div>
+
+            <div class="row">
+                <p class="section-lead"> Donec varius felis id nibh vulputate, in bibendum ligula placerat. Maecenas et mattis lacus. Duis commodo orci et turpis maximus, ac feugiat magna posuere.
+                </p>
                 <div class="col-md-6">
-                    <h4>Service 1</h4>
+                    <h3>Vision & Mission</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui ac gravida
-                        convallis. Proin tortor justo, iaculis quis mi bibendum, porta ornare lacus. Donec justo augue,
-                        mattis et nibh nec, suscipit porttitor risus. Fusce eget aliquet augue. Morbi nisl arcu, laoreet
-                        in erat sed, tristique feugiat arcu.
-                    </p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet quis nunc eget rhoncus. Curabitur pretium gravida arcu. Fusce aliquet sagittis tellus, eget rutrum felis luctus sed. Pellentesque vitae sapien sed nibh tincidunt cursus. Vivamus finibus tellus augue, in porta est cursus quis. 
+                    <ul>
+                        <li>Vision #1</li>
+                        <li>Vision #2</li>
+                        <li>Vision #3</li>
+                </ul>    
+                </p>
                 </div>
-                <div class="col-md-6">
-                    <h4>Service 2</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui ac gravida
-                        convallis. Proin tortor justo, iaculis quis mi bibendum, porta ornare lacus. Donec justo augue,
-                        mattis et nibh nec, suscipit porttitor risus. Fusce eget aliquet augue. Morbi nisl arcu, laoreet
-                        in erat sed, tristique feugiat arcu.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <h4>Service 3</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui ac gravida
-                        convallis. Proin tortor justo, iaculis quis mi bibendum, porta ornare lacus. Donec justo augue,
-                        mattis et nibh nec, suscipit porttitor risus. Fusce eget aliquet augue. Morbi nisl arcu, laoreet
-                        in erat sed, tristique feugiat arcu.
-                    </p>
+                <div class="col-md-6"> 
+                    <h3>Performance</h3>
+                    <canvas id="myPerformanceCanvas"></canvas>
                 </div>
             </div>
         </div>
@@ -137,10 +160,35 @@
 
 
 
-
-    <section>About</section>
+    
     <section>Contact</section>
     <footer>Footer</footer>
+
+    <script>
+        var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+        new Chart("myPerformanceCanvas", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Number of Sales",
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {display: true},
+            scales: {
+                yAxes: [{ticks: {min: 0, max:20}}],
+            }
+        }
+        });    
+    </script>
 </body>
 
 </html>

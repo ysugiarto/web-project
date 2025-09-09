@@ -5,3 +5,43 @@
 .bg-rpl {
     background-color: rgb(99, 3, 3);
 }
+
+section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-img {
+    width: 250px;
+    background-color: beige;
+    border-radius: 100%;
+}
+
+.service-img {
+    max-width: 100%;
+}
+
+#banner {
+    padding: 0px !important;
+}
+
+#service {
+    background-image: url("../img/bg-1.png");
+    background-size: cover;
+    background-attachment: fixed;
+    color: whitesmoke;
+}
+
+.section-lead {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#about {
+    background-color: burlywood;
+}
